@@ -1,0 +1,6 @@
+next-version: 1.0
+assembly-versioning-scheme: MajorMinor
+mode: ContinuousDelivery
+branches:
+  main:
+    regex: ^main

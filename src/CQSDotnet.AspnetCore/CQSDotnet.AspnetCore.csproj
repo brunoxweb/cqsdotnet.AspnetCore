@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<PackageVersion>$(PackageVersion)</PackageVersion>
+    <Authors>Bruno Ribeiro</Authors>
+    <PackageId>CQSDotnet.AspnetCore</PackageId>
+    <Description>CQSDotnet.AspnetCore is an extension for the CQSDotnet package, designed to integrate Command Query Separation (CQS) with the Microsoft.Extensions.DependencyInjection for .NET applications.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CQSDotnet" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+
+</Project>

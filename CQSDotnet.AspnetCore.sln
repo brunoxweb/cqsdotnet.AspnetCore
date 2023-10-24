@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQSDotnet.AspnetCore", "src\CQSDotnet.AspnetCore\CQSDotnet.AspnetCore.csproj", "{53B17D34-299A-4418-A16E-2CC6A1406EFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQSDotnet.AspnetCore.Tests", "tests\CQSDotnet.AspnetCore.Tests\CQSDotnet.AspnetCore.Tests.csproj", "{5B208D74-1CF5-4475-9430-47321085821C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53B17D34-299A-4418-A16E-2CC6A1406EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53B17D34-299A-4418-A16E-2CC6A1406EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53B17D34-299A-4418-A16E-2CC6A1406EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53B17D34-299A-4418-A16E-2CC6A1406EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B208D74-1CF5-4475-9430-47321085821C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B208D74-1CF5-4475-9430-47321085821C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B208D74-1CF5-4475-9430-47321085821C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B208D74-1CF5-4475-9430-47321085821C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95329AA0-7898-4DBC-9861-B0CA6E544545}
+	EndGlobalSection
+EndGlobal
