@@ -24,10 +24,10 @@ namespace CQSDotnet.AspnetCore
             foreach (var assembly in assemblies)
             {
                 services
-                   .ScanAssemblies(assembly, typeof(IQuery), typeof(IQueryHandler<,>))
-                   .ScanAssemblies(assembly, typeof(IQuery), typeof(IQueryValidator<>))
-                   .ScanAssemblies(assembly, typeof(ICommand), typeof(ICommandHandler<>))
-                   .ScanAssemblies(assembly, typeof(ICommand), typeof(ICommandValidator<>));
+                   .ScanAssemblies(assembly, typeof(IQueryHandler<,>))
+                   .ScanAssemblies(assembly, typeof(IQueryValidator<>))
+                   .ScanAssemblies(assembly, typeof(ICommandHandler<>))
+                   .ScanAssemblies(assembly, typeof(ICommandValidator<>));
             }
 
             services.AddSingleton<IQueryHandlerFactory, QueryHandlerFactory>();
@@ -42,23 +42,19 @@ namespace CQSDotnet.AspnetCore
             return services;
         }
 
-        private static IServiceCollection ScanAssemblies(this IServiceCollection services, Assembly assembly, Type serviceType, Type handlerType)
+        private static IServiceCollection ScanAssemblies(this IServiceCollection services, Assembly assembly, Type typeInterface)
         {
-            var serviceTypes = assembly.GetTypes()
-                .Where(type => serviceType.IsAssignableFrom(type))
+            var implementationTypes = assembly.GetTypes()
+                .Where(type => type.GetInterfaces()
+                    .Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeInterface))
                 .ToList();
 
-            for (int i = 0; i < serviceTypes.Count; i++)
+            foreach (var implementationType in implementationTypes)
             {
-                var typeToRegister = serviceTypes[i].Assembly.GetTypes()
-                  .FirstOrDefault(vt => vt.GetInterfaces().Any(a => a.IsGenericType &&
-                             a.GetGenericTypeDefinition() == handlerType &&
-                             a.GetGenericArguments()[0] == serviceTypes[i]));
+                var interfaceType = implementationType.GetInterfaces()
+                    .First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeInterface);
 
-                if (typeToRegister != null)
-                {
-                    services.AddTransient(serviceTypes[i], typeToRegister);
-                }
+                services.AddTransient(interfaceType, implementationType);
             }
 
             return services;
